@@ -2,7 +2,7 @@
 
 ## Description
 
-Sulfuric an application that helps freelancers manage their projects/clients/payments/invoices/proposals/contracts.
+Sulfuric is an application that helps freelancers manage their projects/clients/payments/invoices/proposals/contracts.
 
 ## MVP
 
