@@ -33,7 +33,7 @@ export default function App(props) {
 
             const  handleSignIn = (e) => {
                 e.preventDefault()
-                e.preventDefault()
+          
                 const {email, password} = e.target
             
                 axios.post(`http://localhost:5000/api/signin` , {
