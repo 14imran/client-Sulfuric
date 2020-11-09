@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import React from 'react'
 import MyNav from "./components/MyNav";
+import AddClient from "./components/AddClient";
 
 export default function App(props) {
   let [loggedInUser, setloggedInUser] = useState()
@@ -67,7 +68,7 @@ export default function App(props) {
 <Route path="/sign-in" render={(routeProps) => {
             return <Signin onSignIn={handleSignIn} {...routeProps} />
           }}/>
-
+<AddClient />
   </Switch>
     </div>
   )
