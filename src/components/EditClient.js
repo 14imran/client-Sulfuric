@@ -1,31 +1,34 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 
-export default function AddClient() {
+export default function AddClient(props) {
   let [addClient, setAddClient] = useState();
 
-  const handleAddClient = (e) => {
+  const handleEditClient = (e) => {
     e.preventDefault();
     const { name, email, tag } = e.target;
 
-    axios
-      .post(
-        `http://localhost:5000/api/clients/create`,
-        {
-          name: name.value,
-          email: email.value,
-          tag: tag.value,
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        setAddClient(response.data);
-      });
-  };
+      let clientId = props.match.params.clientID;
+      axios.patch(
+          `http://localhost:5000/api/clients/edit/${clientId}`,
+          {
+            name: name.value,
+            email: email.value,
+            tag: tag.value,
+          },
+          { withCredentials: true }
+        )
+        .then((response) => {
+          setAddClient(response.data)
+        })
+      }
+      
+    
 
   return (
     <div>
-      <form onSubmit={handleAddClient}>
+          hio from edit
+      <form onSubmit={handleEditClient}>
         <div className="form-group">
           <label htmlFor="exampleInputUsername">Username</label>
           <input
