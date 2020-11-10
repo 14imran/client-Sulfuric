@@ -14,7 +14,9 @@ import Clients from "./components/Clients";
 import Clientdetails from "./components/Clientdetails";
 import EditClient from "./components/EditClient";
 import AddProjects from "./components/AddProjects";
-import Projects from './components/Projects'
+import Projects from "./components/Projects";
+import Projectdetails from "./components/Projectdetails";
+import EditProject from "./components/EditProject";
 
 export default function App(props) {
   let [loggedInUser, setloggedInUser] = useState();
@@ -74,14 +76,13 @@ export default function App(props) {
         <Route path="/clients" component={Clients} />;
         <Route path="/add-clients" component={AddClient} />
         <Route exact path="/clientDetail/:clientID" component={Clientdetails} />
-        
         <Route path="/clientDetail/edit/:clientID" component={EditClient} />
-//projects
-<Route path="/projects" component={Projects} />;
-<Route path="/add-projects" component={AddProjects} />
-
-
-
+        //projects
+        <Route path="/projects" component={Projects} />;
+        <Route path="/add-projects" component={AddProjects} />
+        <Route exact path="/projectDetail/:projectID" component={Projectdetails}
+        />
+        <Route path="/projectDetail/edit/:projectID" component={EditProject} />
         <Route
           path="/sign-up"
           render={(routeProps) => {
@@ -98,4 +99,3 @@ export default function App(props) {
     </div>
   );
 }
-
