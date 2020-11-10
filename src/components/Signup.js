@@ -1,8 +1,36 @@
-import React from 'react';
+import { React, useState } from "react";
+import axios from "axios";
 
 export default function SignUp(props){
+    let [loggedInUser, setloggedInUser] = useState();
+
+    const handleSignUp = (e) => {
+      e.preventDefault();
+      const { username, email, password } = e.target;
+  
+      axios
+        .post(
+          `http://localhost:5000/api/signup`,
+          {
+            username: username.value,
+            email: email.value,
+            password: password.value,
+          },
+          { withCredentials: true }
+        )
+        .then((response) => {
+          setloggedInUser(response.data);
+          props.history.push('/');
+        });
+    };
+  
+
+
+
+
+
     return (
-        <form onSubmit={props.onSignUp}>
+        <form onSubmit={handleSignUp}>
             <div className="form-group">
                 <label htmlFor="exampleInputUsername">Username</label>
                 <input type="text" className="form-control" id="exampleInputUsername" name="username" />

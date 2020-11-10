@@ -19,52 +19,6 @@ import Projectdetails from "./components/Projectdetails";
 import EditProject from "./components/EditProject";
 
 export default function App(props) {
-  let [loggedInUser, setloggedInUser] = useState();
-
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    const { username, email, password } = e.target;
-
-    axios
-      .post(
-        `http://localhost:5000/api/signup`,
-        {
-          username: username.value,
-          email: email.value,
-          password: password.value,
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        setloggedInUser(response.data);
-        // props.history.push('/');
-      });
-  };
-
-  const handleSignIn = (e) => {
-    e.preventDefault();
-
-    const { email, password } = e.target;
-
-    axios
-      .post(
-        `http://localhost:5000/api/signin`,
-        {
-          email: email.value,
-          password: password.value,
-        },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        setloggedInUser(response.data);
-      })
-      .catch((er) => {
-        setloggedInUser({
-          errorMessage: er.response.data.error,
-        });
-      });
-  };
-
   return (
     <div>
       <MyNav />
@@ -82,13 +36,13 @@ export default function App(props) {
         <Route
           path="/sign-up"
           render={(routeProps) => {
-            return <Signup onSignUp={handleSignUp} {...routeProps} />;
+            return <Signup  {...routeProps} />;
           }}
         />
         <Route
           path="/sign-in"
           render={(routeProps) => {
-            return <Signin onSignIn={handleSignIn} {...routeProps} />;
+            return <Signin  {...routeProps} />;
           }}
         />
       </Switch>

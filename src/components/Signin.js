@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import { React, useState } from "react";
+import axios from "axios";
 
 export default function SignIn(props) {
   //componentWillUnMount
@@ -6,8 +7,36 @@ export default function SignIn(props) {
   //         //didMount
   //         return props.onUnmount
   //     }, [])
+  let [loggedInUser, setloggedInUser] = useState();
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    const { email, password } = e.target;
+    
+
+    axios
+      .post(
+        `http://localhost:5000/api/signin`,
+        {
+          email: email.value,
+          password: password.value,
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        setloggedInUser(response.data);
+        props.history.push('/');
+      })
+      .catch((er) => {
+        setloggedInUser({
+          errorMessage: er.response.data.error,
+        });
+      });
+  };
+
+  
   return (
-    <form onSubmit={props.onSignIn}>
+    <form onSubmit={handleSignIn}>
       <div className="form-group">
         <label htmlFor="exampleInputEmail1">Email address</label>
         <input
