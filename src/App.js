@@ -36,9 +36,7 @@ export default function App(props) {
         { withCredentials: true }
       )
       .then((response) => {
-        setloggedInUser(() => {
-          loggedInUser = response.data;
-        });
+        setloggedInUser(response.data);
         // props.history.push('/');
       });
   };
@@ -58,9 +56,7 @@ export default function App(props) {
         { withCredentials: true }
       )
       .then((response) => {
-        setloggedInUser({
-          loggedInUser: response.data,
-        });
+        setloggedInUser(response.data);
       })
       .catch((er) => {
         setloggedInUser({
