@@ -32,6 +32,8 @@ function MyNav(props) {
               </Link>
             </>
           )}
+ <Link to="/projects">All projects</Link>
+<Link to="/add-projects">Add Projects</Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
