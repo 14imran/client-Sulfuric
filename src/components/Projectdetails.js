@@ -3,11 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Projectdetails(props) {
-      let [projectsData, setProjectsData] = useState([]);
+  let [projectsData, setProjectsData] = useState([]);
 
   useEffect(() => {
-    let projectId = props.match.params.projectID
-    console.log('im proid',projectId)
+    let projectId = props.match.params.projectID;
+    console.log("im proid", projectId);
     axios
       .get(`http://localhost:5000/api/projects/${projectId}`, {
         withCredentials: true,
@@ -24,7 +24,7 @@ export default function Projectdetails(props) {
         withCredentials: true,
       })
       .then((response) => {
-            setProjectsData(response.data);
+        setProjectsData(response.data);
       });
   };
 

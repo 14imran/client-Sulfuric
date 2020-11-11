@@ -9,7 +9,7 @@ function MyNav(props) {
   const [errorMessage, seterrorMessage] = useState(null);
   let buttonStyle = { marginLeft: "10px" };
   const handleLogout = () => {
-    console.log("goo");
+  
 
     axios
       .post(`http://localhost:5000/api/logout`, {}, { withCredentials: true })
@@ -21,7 +21,7 @@ function MyNav(props) {
 
   return (
     <Nav className="flex-column" bg="light" expand="lg">
-      <Link to="/dashboard/todos">Todos</Link>
+      {/* <Link to="/dashboard/todo">Todos</Link> */}
 
       <Link to="/dashboard/clients">All clients</Link>
       <Link to="/dashboard/add-clients">Add clients</Link>

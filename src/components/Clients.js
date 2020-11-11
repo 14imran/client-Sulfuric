@@ -12,8 +12,7 @@ export default function Clients() {
         setClientsData(response.data);
       });
   }, []);
-  console.log(clientsData);
-
+  
   return (
     <>
       {clientsData.map((client, index) => (

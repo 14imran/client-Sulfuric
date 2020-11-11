@@ -27,7 +27,7 @@ export default function Clientdetails(props) {
       });
   };
 
-  console.log(clientsData._id);
+
 
   return (
     <div>

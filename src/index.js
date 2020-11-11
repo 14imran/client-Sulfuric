@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
@@ -8,7 +9,8 @@ import { BrowserRouter } from 'react-router-dom';
 // import { render } from 'react-dom';
 import {EditorState} from "draft-js";
 import {Editor} from "react-draft-wysiwyg";
-import './App.css'
+
+
 
 ReactDOM.render(
   <BrowserRouter>
