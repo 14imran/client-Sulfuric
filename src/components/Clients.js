@@ -17,7 +17,7 @@ export default function Clients() {
   return (
     <>
       {clientsData.map((client, index) => (
-        <Link to={`/clientDetail/${client._id}`} key={index}>
+        <Link to={`/dashboard/clientDetail/${client._id}`} key={index}>
           <p>{client.name}</p>
         </Link>
       ))}

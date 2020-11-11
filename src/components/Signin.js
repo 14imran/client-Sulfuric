@@ -7,7 +7,7 @@ export default function SignIn(props) {
   //         //didMount
   //         return props.onUnmount
   //     }, [])
-  let [loggedInUser, setloggedInUser] = useState();
+  let [loggedInUser, setloggedInUser] = useState(null);
   const handleSignIn = (e) => {
     e.preventDefault();
 

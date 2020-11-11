@@ -1,10 +1,10 @@
 import logo from "./logo.svg";
-import "./App.css";
+// import "./App.css";
 import { react, useState } from "react";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import axios from "axios";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect ,Link} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 
 import React from "react";
@@ -17,35 +17,46 @@ import AddProjects from "./components/AddProjects";
 import Projects from "./components/Projects";
 import Projectdetails from "./components/Projectdetails";
 import EditProject from "./components/EditProject";
+import Dashboard from './components/Dashboard'
+
+function LandingHomePage(){
+  return(
+    <>
+    <Link to='/dashboard'>Goto Dashboard</Link>
+    <Link to='/Signup'>Signup</Link>
+    <Link to='/Signin'>Signin</Link>
+
+    </>
+  )
+}
+
 
 export default function App(props) {
+  const [loggedInUser, setloggedInUser] = useState(false)
+
+  
   return (
-    <div>
-      <MyNav />
-      <Switch>
-        <Route path="/clients" component={Clients} />;
-        <Route path="/add-clients" component={AddClient} />
-        <Route exact path="/clientDetail/:clientID" component={Clientdetails} />
-        <Route path="/clientDetail/edit/:clientID" component={EditClient} />
-        //projects
-        <Route path="/projects" component={Projects} />;
-        <Route path="/add-projects" component={AddProjects} />
-        <Route exact path="/projectDetail/:projectID" component={Projectdetails}
-        />
-        <Route path="/projectDetail/edit/:projectID" component={EditProject} />
+    <>
+     
+         <Switch>
+         
+        
+         <Route exact path="/" component={LandingHomePage} />;
+         <Route  path="/dashboard/" component={Dashboard} />;
         <Route
           path="/sign-up"
           render={(routeProps) => {
-            return <Signup  {...routeProps} />;
+            return <Signup  loggedInUser={loggedInUser} 
+             {...routeProps} />;
           }}
         />
         <Route
           path="/sign-in"
           render={(routeProps) => {
-            return <Signin  {...routeProps} />;
+            return <Signin loggedInUser={loggedInUser}  {...routeProps} />;
           }}
         />
       </Switch>
-    </div>
+      </>
   );
 }

@@ -36,7 +36,7 @@ export default function Projectdetails(props) {
       <p>{projectsData.title}</p>
       <p>{projectsData.amount}</p>
 
-      <Link to={`/projectDetail/edit/${projectsData._id}`}>
+      <Link to={`/dashboard/projectDetail/edit/${projectsData._id}`}>
         <button>Edit</button>
       </Link>
       <button onClick={() => handleDelete()}>Delete</button>

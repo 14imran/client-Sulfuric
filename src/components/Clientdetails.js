@@ -35,7 +35,7 @@ export default function Clientdetails(props) {
       <p>{clientsData.email}</p>
       <p>{clientsData.tag}</p>
 
-      <Link to={`/clientDetail/edit/${clientsData._id}`}>
+      <Link to={`/dashboard/clientDetail/edit/${clientsData._id}`}>
         <button>Edit</button>{" "}
       </Link>
       <button onClick={() => handleDelete()}>Delete</button>

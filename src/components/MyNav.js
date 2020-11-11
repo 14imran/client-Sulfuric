@@ -1,28 +1,41 @@
-import React from "react";
+import { React, useState } from "react";
+import axios from "axios";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function MyNav(props) {
+  const [loggedInUser, setloggedInUser] = useState(false)
+
+ 
+  const [errorMessage, seterrorMessage] = useState(null)
   let buttonStyle = { marginLeft: "10px" };
+ const handleLogout=()=>{
+   console.log("goo")
+  
+   axios.post(`http://localhost:5000/api/logout`, {}, {withCredentials: true})
+   .then(() => {
+       setloggedInUser(true)
+       props.history.push('/')
+   })
+ }
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Link to="/">Todos</Link>
+    <Nav  className="flex-column" bg="light" expand="lg">
+     
+          <Link to="/dashboard/todos">Todos</Link>
 
-          <Link to="/clients">All clients</Link>
-          <Link to="/add-clients">Add clients</Link>
+          <Link to="/dashboard/clients">All clients</Link>
+          <Link to="/dashboard/add-clients">Add clients</Link>
 
-          <Link style={buttonStyle} to="/add-form">
+          <Link style={buttonStyle} to="/dashboard/addtodo">
             Add Todo
           </Link>
-          <Link to="/projects">All projects</Link>
-          <Link to="/add-projects">Add Projects</Link>
+          <Link to="/dashboard/todo">Todos</Link>
+          <Link to="/dashboard/projects">All projects</Link>
+          <Link to="/dashboard/add-projects">Add Projects</Link>
 
-          {props.loggedInUser ? (
-            <button style={buttonStyle} onClick={props.onLogout}>
+          {loggedInUser ? (
+            <button style={buttonStyle} onClick={handleLogout}>
               Logout
             </button>
           ) : (
@@ -35,9 +48,8 @@ function MyNav(props) {
               </Link>
             </>
           )}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+      
+    </Nav>
   );
 }
 

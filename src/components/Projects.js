@@ -19,7 +19,7 @@ export default function Projects() {
       return (
         <>
           {projectsData.map((project, index) => (
-            <Link to={`/projectDetail/${project._id}`} key={index}>
+            <Link to={`/dashboard/projectDetail/${project._id}`} key={index}>
               <p>{project.projectName}</p>
             </Link>
           ))}
