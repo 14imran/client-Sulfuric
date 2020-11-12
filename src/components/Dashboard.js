@@ -5,7 +5,7 @@ import Signup from "./Signup";
 import Signin from "./Signin";
 import axios from "axios";
 import { Route, Switch, Redirect, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
+
 
 import React from "react";
 import MyNav from "./MyNav";
